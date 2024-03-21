@@ -1,0 +1,54 @@
+version: '3'
+services:
+  database:
+    container_name: goomer-lista-rango-db
+    image: postgres:16.2-alpine3.19
+    restart: always
+    volumes:
+      - ./.infra/database/init-script.sql:/docker-entrypoint-initdb.d/init-script.sql
+      - pgdata:/var/lib/postgresql/data
+    env_file:
+      - .env
+    ports:
+      - '${POSTGRES_PORT}:${POSTGRES_PORT}'
+    networks:
+      - goomer-lista-rango
+
+  pgadmin:
+    container_name: goomer-lista-rango-pgadmin
+    image: dpage/pgadmin4
+    volumes:
+      - ./pgdata/pgadmin:/root/.pgadmin
+    env_file:
+      - .env
+    networks:
+      - goomer-lista-rango
+
+  api:
+    container_name: goomer-lista-rango-api
+    image: goomer-lista-rango-api_${NODE_ENV}
+    environment:
+      - NODE_ENV=${NODE_ENV}
+    build:
+      context: ./
+      dockerfile: .infra/Dockerfile
+      target: ${NODE_ENV}
+    entrypoint: ['npm', 'run', 'start:${NODE_ENV}']
+    env_file:
+      - .env
+    ports:
+      - '${API_PORT}:${API_PORT}'
+    restart: always
+    networks:
+      - goomer-lista-rango
+    volumes:
+      - ./:/src
+      - /src/node_modules
+    depends_on:
+      - database
+
+networks:
+  goomer-lista-rango:
+
+volumes:
+  pgdata:

@@ -1,0 +1,98 @@
+GET /health
+Host: localhost:3000
+
+###
+POST /api/restaurants
+Host: localhost:3000
+Content-Type: application/json
+
+{
+  "name": "McDonalds",
+  "urlImage": "https://www.mcdonalds.com.br/content/dam/br/novidades/2021/06/2021-06-25-mcflurry-ovomaltine.png",
+  "address": {
+    "street": "Rua do McDonalds",
+    "streetNumber": 123,
+    "city": "Nova Santa Barbara",
+    "state": "PR",
+    "country": "Brasil",
+    "neighborhood": "Centro",
+    "zipCode": "12345-678"
+  },
+  "openingHours": [
+    {
+      "dayOfWeek": "1",
+      "openingTime": "08:00",
+      "closingTime": "18:00"
+    },
+    {
+      "dayOfWeek": "2",
+      "openingTime": "08:00",
+      "closingTime": "18:00"
+    },
+    {
+      "dayOfWeek": "3",
+      "openingTime": "08:00",
+      "closingTime": "18:00"
+    },
+    {
+      "dayOfWeek": "4",
+      "openingTime": "08:00",
+      "closingTime": "18:00"
+    },
+    {
+      "dayOfWeek": "5",
+      "openingTime": "08:00",
+      "closingTime": "18:00"
+    },
+    {
+      "dayOfWeek": "6",
+      "openingTime": "08:00",
+      "closingTime": "18:00"
+    },
+    {
+      "dayOfWeek": "7",
+      "openingTime": "08:00",
+      "closingTime": "18:00"
+    }
+  ]
+}
+
+###
+GET /api/restaurants
+Host: localhost:3000
+
+###
+GET /api/restaurants/79d268bb-e11b-4836-8108-5b1507c06442
+Host: localhost:3000
+
+###
+PATCH /api/restaurants/79d268bb-e11b-4836-8108-5b1507c06442
+Host: localhost:3000
+Content-Type: application/json
+
+{
+  "name": "McDonalds 2",
+  "urlImage": "https://www.mcdonalds.com.br/content/dam/br/novidades/2021/06/2021-06-25-mcflurry-ovomaltine.png",
+  "address": {
+    "street": "Rua do McDonalds",
+    "streetNumber": 123,
+    "city": "Nova Santa Barbara",
+    "state": "PR",
+    "country": "Brasil",
+    "neighborhood": "Centro",
+    "zipCode": "12345-678"
+  },
+  "openingHours": [
+    {
+      "dayOfWeek": "1",
+      "openingTime": "08:00",
+      "closingTime": "23:00"
+    }
+  ]
+}
+
+###
+DELETE /api/restaurants/950292e6-9cd2-4424-9f71-9ef28d009adf
+Host: localhost:3000
+
+
