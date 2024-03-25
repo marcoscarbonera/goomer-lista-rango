@@ -6,7 +6,6 @@ import { IRestaurantRepository } from './IRestaurantRepository';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { v4 as uuidv4 } from 'uuid';
-import { DeepPartial } from 'typeorm';
 
 @Injectable()
 export class RestaurantRepository implements IRestaurantRepository {

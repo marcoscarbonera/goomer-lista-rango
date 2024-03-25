@@ -10,6 +10,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { ProductCategoryModel } from './ProductCategoryModel';
+import { RestaurantModel } from '../restaurant/RestaurantModel';
 
 @Entity('product')
 export class ProductModel {
@@ -17,6 +18,18 @@ export class ProductModel {
     primaryKeyConstraintName: 'product_PK',
   })
   id: string;
+
+  @ManyToOne(() => RestaurantModel, {
+    nullable: false,
+  })
+  @JoinColumn({
+    name: 'restaurant_id',
+    foreignKeyConstraintName: 'product_restaurant_FK',
+  })
+  @Index('product_restaurant_IDX')
+  restaurant: RestaurantModel;
+
+  restaurantId: string;
 
   @Column({ length: 255, name: 'name' })
   name: string;
@@ -42,6 +55,8 @@ export class ProductModel {
   })
   @Index('product_product_category_IDX')
   productCategory: ProductCategoryModel;
+
+  productCategoryId: string;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;

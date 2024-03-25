@@ -3,9 +3,13 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { ProductModel } from './ProductModel';
 
 @Entity('product_promotion')
 export class ProductPromotionModel {
@@ -13,6 +17,18 @@ export class ProductPromotionModel {
     primaryKeyConstraintName: 'product_promotion_PK',
   })
   id: string;
+
+  @ManyToOne(() => ProductModel, {
+    nullable: false,
+  })
+  @JoinColumn({
+    name: 'product_id',
+    foreignKeyConstraintName: 'product_promotion_product_FK',
+  })
+  @Index('product_promotion_product_IDX')
+  product: ProductModel;
+
+  productId: string;
 
   @Column({ type: 'text', name: 'description' })
   description: string;

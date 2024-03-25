@@ -1,12 +1,12 @@
 import { Entity } from 'src/helpers/Entity';
 
-export class RestaurantOpeningHour extends Entity {
-  constructor(input: Partial<RestaurantOpeningHour>) {
+export class ProductPromotionHour extends Entity {
+  constructor(input: Partial<ProductPromotionHour>) {
     super(input);
   }
 
+  productPromotionId: string;
   dayOfWeek: number;
   openingTime: string;
   openingDurationMinutes: number;
-  restaurantId: string;
 }

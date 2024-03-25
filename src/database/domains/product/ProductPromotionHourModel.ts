@@ -27,6 +27,8 @@ export class ProductPromotionHourModel {
   })
   productPromotion: ProductPromotionModel;
 
+  productPromotionId: string;
+
   @PrimaryColumn({
     type: 'int',
     primaryKeyConstraintName: 'product_promotion_hour_PK',

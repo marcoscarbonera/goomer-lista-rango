@@ -5,11 +5,9 @@ import { Restaurant } from '@restaurant/domains/restaurant/Restaurant';
 import { IRestaurantAddressRepository } from '@restaurant/domains/restaurantAddress/IRestaurantAddressRepository';
 import { RestaurantAddress } from '@restaurant/domains/restaurantAddress/RestaurantAddress';
 import { IRestaurantOpeningHoursRepository } from '@restaurant/domains/restaurantOpeningHour/IRestaurantOpeningHourRepository';
-import {
-  RestaurantOpeningHour,
-  calculateOpeningDurationMinutes,
-} from '@restaurant/domains/restaurantOpeningHour/RestaurantOpeningHour';
+import { RestaurantOpeningHour } from '@restaurant/domains/restaurantOpeningHour/RestaurantOpeningHour';
 import { CreateRestaurantDto } from '@restaurant/dto/CreateRestaurantDto';
+import { calculateDurationMinutes } from 'src/helpers/TimerValidation';
 
 @Injectable()
 export class CreateRestaurantUseCase {
@@ -22,7 +20,6 @@ export class CreateRestaurantUseCase {
   async execute(restaurantDto: CreateRestaurantDto): Promise<Restaurant> {
     try {
       const restaurant = new Restaurant({
-        id: restaurantDto.id,
         name: restaurantDto.name,
         urlImage: restaurantDto.urlImage,
       });
@@ -49,7 +46,7 @@ export class CreateRestaurantUseCase {
         validateTimeFormat(openingHour.openingTime);
         validateTimeFormat(openingHour.closingTime);
 
-        const openingDurationMinutes = calculateOpeningDurationMinutes(
+        const openingDurationMinutes = calculateDurationMinutes(
           openingHour.openingTime,
           openingHour.closingTime,
         );

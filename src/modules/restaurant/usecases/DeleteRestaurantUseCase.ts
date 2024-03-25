@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { IRestaurantRepository } from '@restaurant/domains/restaurant/IRestaurantRepository';
-import { Restaurant } from '@restaurant/domains/restaurant/Restaurant';
 import { IRestaurantAddressRepository } from '@restaurant/domains/restaurantAddress/IRestaurantAddressRepository';
 import { IRestaurantOpeningHoursRepository } from '@restaurant/domains/restaurantOpeningHour/IRestaurantOpeningHourRepository';
 

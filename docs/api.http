@@ -62,7 +62,7 @@ GET /api/restaurants
 Host: localhost:3000
 
 ###
-GET /api/restaurants/79d268bb-e11b-4836-8108-5b1507c06442
+GET /api/restaurants/5938dd0d-74be-4150-97fe-83ae45a73a65
 Host: localhost:3000
 
 ###
@@ -93,6 +93,76 @@ Content-Type: application/json
 
 ###
 DELETE /api/restaurants/950292e6-9cd2-4424-9f71-9ef28d009adf
+Host: localhost:3000
+
+###
+POST /api/restaurants/98fbf2fd-764d-4612-8463-ca20badaa7d7/products
+Host: localhost:3000
+Content-Type: application/json
+
+{
+  "name": "Big Mac",
+  "price": 29.9,
+  "urlImage": "https://www.mcdonalds.com.br/content/dam/br/novidades/2021/06/2021-06-25-mcflurry-ovomaltine.png",
+  "productCategoryId": "95af1f9d-2615-4e94-ba4c-e06e5aeeac32",
+  "productPromotion" : {
+    "price": 25.9,
+    "description": "Promoção de lançamento",
+    "promotionHours": [
+      {
+        "dayOfWeek": "1",
+        "openingTime": "08:00",
+        "closingTime": "18:00"
+      },
+      {
+        "dayOfWeek": "2",
+        "openingTime": "08:00",
+        "closingTime": "18:00"
+      } 
+    ]
+  }
+}
+
+###
+GET /api/restaurants/98fbf2fd-764d-4612-8463-ca20badaa7d7/products
+Host: localhost:3000
+
+
+###
+PATCH /api/restaurants/98fbf2fd-764d-4612-8463-ca20badaa7d7/products/07233a73-a4af-4a04-8f8e-ab6e01fd7131
+Host: localhost:3000
+Content-Type: application/json
+
+{
+  "name": "Big Mac 2",
+  "price": 29.9,
+  "urlImage": "https://www.mcdonalds.com.br/content/dam/br/novidades/2021/06/2021-06-25-mcflurry-ovomaltine.png",
+  "productCategoryId": "95af1f9d-2615-4e94-ba4c-e06e5aeeac32",
+  "productPromotion" : {
+    "price": 25.9,
+    "description": "Promoção de lançamento",
+    "promotionHours": [
+      {
+        "dayOfWeek": "1",
+        "openingTime": "08:00",
+        "closingTime": "18:00"
+      },
+      {
+        "dayOfWeek": "2",
+        "openingTime": "08:00",
+        "closingTime": "23:00"
+      },
+      {
+        "dayOfWeek": "3",
+        "openingTime": "08:00",
+        "closingTime": "23:00"
+      }
+    ]
+  }
+}
+
+###
+DELETE /api/restaurants/98fbf2fd-764d-4612-8463-ca20badaa7d7/products/23a9c76e-926a-434d-a49e-1cd82c611e69
 Host: localhost:3000
 
 
